@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="manage_contacts.ListPage">
+    <ContentPage.Content>
+        <!--<ListView x:Name="contacts" HasUnevenRows="True">-->
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    --><!--<TextCell Text="{Binding Name}" Detail="{Binding Status}" DetailColor="Blue" />-->
+                    <!--<ImageCell Text="{Binding Name}" Detail="{Binding Status}" DetailColor="Maroon" ImageSource="{Binding ImageUrl}" />--><!--
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <StackLayout >
+                                <Image WidthRequest="50"  Aspect="AspectFit" Source="{Binding ImageUrl}" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding Status}" TextColor="Gray" />
+                            </StackLayout>
+                            <Button Text="Follow" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+        <ListView x:Name="contacts" 
+                  HasUnevenRows="True"
+                  IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Title}"
+                  GroupShortNameBinding="{Binding ShortTitle}"
+                  ItemTapped="contacts_ItemTapped"
+                  ItemSelected="contacts_ItemSelected">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Status}" DetailColor="Blue" >
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}"/>
+                            <MenuItem Text="Delete" Clicked="Delete_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                    <!--<ImageCell Text="{Binding Name}" Detail="{Binding Status}" DetailColor="Maroon" ImageSource="{Binding ImageUrl}" />-->
+                    <!--<ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <StackLayout >
+                                <Image WidthRequest="50"  Aspect="AspectFit" Source="{Binding ImageUrl}" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding Status}" TextColor="Gray" />
+                            </StackLayout>
+                            <Button Text="Follow" />
+                        </StackLayout>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Call" Clicked="Call_Clicked" />
+                            <MenuItem Text="Delete" Clicked="Delete_Clicked" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                    </ViewCell>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </ContentPage.Content>
+</ContentPage>
